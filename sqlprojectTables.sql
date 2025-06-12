@@ -343,3 +343,25 @@ END//
 
 DELIMITER ;
 
+DELIMITER //
+
+CREATE TRIGGER trg_check_stock_before_cart_insert
+BEFORE INSERT ON cart_item
+FOR EACH ROW
+BEGIN
+    DECLARE current_stock INT;
+
+    -- şuanki stoğu al
+    SELECT stock INTO current_stock
+    FROM product
+    WHERE productID = NEW.productID;
+
+    -- istenen miktar fazla mı kontrolü
+    IF NEW.quantity > current_stock THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Insufficient stock: Cannot add this quantity to the cart.';
+    END IF;
+END//
+
+DELIMITER ;
+
