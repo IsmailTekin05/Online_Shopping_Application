@@ -312,3 +312,32 @@ ON SCHEDULE EVERY 1 DAY
 DO
   DELETE FROM coupon WHERE expirationDate < CURDATE();
 
+-- dk
+-- renk size ve beden  filtreleme 
+DELIMITER //
+
+CREATE FUNCTION is_product_available(
+    p_color VARCHAR(30),
+    p_size VARCHAR(10),
+    p_material VARCHAR(50)
+)
+RETURNS BOOLEAN
+DETERMINISTIC
+READS SQL DATA
+BEGIN
+    DECLARE result BOOLEAN;
+
+    SELECT EXISTS (
+        SELECT 1
+        FROM product
+        WHERE (p_color IS NULL OR color = p_color)
+          AND (p_size IS NULL OR size = p_size)
+          AND (p_material IS NULL OR material = p_material)
+          AND stock > 0
+    ) INTO result;
+
+    RETURN result;
+END//
+
+DELIMITER ;
+
