@@ -42,7 +42,24 @@ CREATE TABLE address (
     FOREIGN KEY (customerID) REFERENCES customer(customerID)
 );
 
--- 4. GAME TABLE
+
+-- 4. SHIPPING_COMPANY TABLE
+CREATE TABLE shipping_company (
+    shipmentID INT AUTO_INCREMENT PRIMARY KEY,
+    companyName VARCHAR(255) UNIQUE
+);
+
+-- 5. SELLER TABLE
+CREATE TABLE seller (
+    sellerID INT AUTO_INCREMENT PRIMARY KEY,
+    sellerName VARCHAR(100) UNIQUE,
+    experience INT,
+    rating DECIMAL(3,2),
+    shipmentID INT,
+    FOREIGN KEY (shipmentID) REFERENCES shipping_company(shipmentID)
+);
+
+-- 6. GAME TABLE
 CREATE TABLE game (
     gameID INT AUTO_INCREMENT PRIMARY KEY,
     gameName VARCHAR(100),
@@ -50,7 +67,7 @@ CREATE TABLE game (
     resetHours INT
 );
 
--- 5. COUPON TABLE
+-- 7. COUPON TABLE
 CREATE TABLE coupon (
     couponID INT AUTO_INCREMENT PRIMARY KEY,
     couponCode VARCHAR(50) UNIQUE,
@@ -62,21 +79,6 @@ CREATE TABLE coupon (
     FOREIGN KEY (gameID) REFERENCES game(gameID)
 );
 
--- 6. SELLER TABLE
-CREATE TABLE seller (
-    sellerID INT AUTO_INCREMENT PRIMARY KEY,
-    sellerName VARCHAR(100) UNIQUE,
-    experience INT,
-    rating DECIMAL(3,2),
-    shipmentID INT,
-    FOREIGN KEY (shipmentID) REFERENCES shipping_company(shipmentID)
-);
-
--- 7. SHIPPING_COMPANY TABLE
-CREATE TABLE shipping_company (
-    shipmentID INT AUTO_INCREMENT PRIMARY KEY,
-    companyName VARCHAR(255) UNIQUE
-);
 
 -- 8. PRODUCT TABLE
 CREATE TABLE product (
