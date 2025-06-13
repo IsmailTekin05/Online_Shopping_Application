@@ -74,7 +74,7 @@ CREATE TABLE coupon (
     discountAmount DECIMAL(5,2),
     expirationDate DATE,
     sellerID INT,
-    gameID INT,
+    gameID INT DEFAULT NULL,
     FOREIGN KEY (sellerID) REFERENCES seller(sellerID),
     FOREIGN KEY (gameID) REFERENCES game(gameID)
 );
@@ -141,6 +141,8 @@ CREATE TABLE orders (
     FOREIGN KEY (address_name, customerID) REFERENCES address(address_name, customerID)
 );
 
+ALTER TABLE order_product
+ADD COLUMN quantity INT DEFAULT 1;
 -- 14. ORDER_PRODUCT TABLE
 CREATE TABLE order_product (
     orderID INT,
@@ -193,7 +195,7 @@ INSERT INTO customer VALUES (1, 'Ali Veli', '05321234567', 'ali@example.com', '1
 INSERT INTO shipping_company VALUES (1, 'Yurtiçi Kargo');
 INSERT INTO seller VALUES (1, 'OyunSatıcısı', 5, 4.7, 1);
 INSERT INTO product VALUES (1, 'Oyun Mouse', 450.00, 'Siyah', 'Orta', 'Plastik', 100, 1);
-INSERT INTO game VALUES (1, 'Spin Master', 'Luck', 24);
+INSERT INTO game VALUES (2, 'Spin Master', 'Luck', 24);
 
 
 -- Yeni Ürün Ekleme ya da Mevcut Ürüne Stok Arttırma
@@ -209,15 +211,22 @@ CREATE PROCEDURE AddOrUpdateProductStock(
     IN p_material VARCHAR(50)
 )
 BEGIN
-    DECLARE v_productID INT;
+    DECLARE v_productID INT DEFAULT NULL;
+    DECLARE v_exists INT;
 
-    SELECT productID INTO v_productID
+    -- Ürün var mı kontrol et
+    SELECT COUNT(*) INTO v_exists
     FROM product
-    WHERE sellerID = p_sellerID AND productName = p_productName
-    LIMIT 1;
+    WHERE sellerID = p_sellerID AND productName = p_productName;
 
-    IF v_productID IS NOT NULL THEN
-        -- Ürün zaten varsa stoğu artır
+    IF v_exists > 0 THEN
+        -- ID'yi al
+        SELECT productID INTO v_productID
+        FROM product
+        WHERE sellerID = p_sellerID AND productName = p_productName
+        LIMIT 1;
+
+        -- Stok güncelle
         UPDATE product
         SET stock = stock + p_quantity
         WHERE productID = v_productID;
@@ -226,7 +235,7 @@ BEGIN
         INSERT INTO product(productName, price, color, size, material, stock, sellerID)
         VALUES (p_productName, p_price, p_color, p_size, p_material, p_quantity, p_sellerID);
     END IF;
-END //
+END//
 
 DELIMITER ;
 
@@ -252,7 +261,7 @@ DELIMITER ;
 
 -- Gelirleri Hesaplayan Function
 DELIMITER //
-CREATE FUNCTION GetSellerIncome(p_sellerID INT)
+CREATE FUNCTION GetSellerIncome2(p_sellerID INT)
 RETURNS DECIMAL(10,2)
 DETERMINISTIC
 READS SQL DATA
