@@ -187,15 +187,6 @@ CREATE TABLE invites (
     FOREIGN KEY (customerID) REFERENCES customer(customerID),
     FOREIGN KEY (referrerID) REFERENCES customer(customerID)
 );
-ALTER TABLE coupon ADD customerID INT;
-ALTER TABLE coupon ADD used BOOLEAN DEFAULT 0;
-ALTER TABLE coupon ADD FOREIGN KEY (customerID) REFERENCES customer(customerID);
-CREATE TABLE game_play_log (
-    customerID INT,
-    playDate DATE,
-    PRIMARY KEY (customerID, playDate),
-    FOREIGN KEY (customerID) REFERENCES customer(customerID)
-);
 
 -- ÖRNEK VERİ (İsteğe bağlı)
 INSERT INTO customer VALUES (1, 'Ali Veli', '05321234567', 'ali@example.com', '12345', 175, 25, NULL);
