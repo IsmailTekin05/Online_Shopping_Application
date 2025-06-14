@@ -190,6 +190,9 @@ CREATE TABLE invites (
     FOREIGN KEY (referrerID) REFERENCES customer(customerID)
 );
 
+ALTER TABLE plays ADD COLUMN playTime DATETIME DEFAULT CURRENT_TIMESTAMP;
+
+
 -- ÖRNEK VERİ (İsteğe bağlı)
 INSERT INTO customer VALUES (1, 'Ali Veli', '05321234567', 'ali@example.com', '12345', 175, 25, NULL);
 INSERT INTO shipping_company VALUES (1, 'Yurtiçi Kargo');
@@ -373,3 +376,33 @@ END//
 
 DELIMITER ;
 
+-- aynı gün oynanıp oynanmadığını kontrol ediyor
+DELIMITER $$
+
+CREATE FUNCTION can_play_today(p_customerID INT, p_gameID INT)
+RETURNS BOOLEAN
+DETERMINISTIC
+READS SQL DATA
+BEGIN
+    DECLARE play_count INT;
+
+    SELECT COUNT(*) INTO play_count
+    FROM plays
+    WHERE customerID = p_customerID 
+      AND gameID = p_gameID 
+      AND DATE(playTime) = CURDATE();
+
+    RETURN play_count = 0;
+END $$
+
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE add_to_cart(IN cartID INT, IN productID INT, IN quantity INT)
+BEGIN
+    INSERT INTO cart_item (cartID, productID, quantity)
+    VALUES (cartID, productID, quantity)
+    ON DUPLICATE KEY UPDATE quantity = quantity + quantity;
+END //
+DELIMITER ;
