@@ -74,24 +74,26 @@ Online_Shopping_Application/
 
 ## Database Model
 
-| Table Name   | Description                                 |
-|--------------|---------------------------------------------|
-| users        | Stores user information (customers, sellers, admins) |
-| products     | Contains product details                    |
-| categories   | Product categories                          |
-| orders       | Customer orders                            |
-| order_items  | Items within each order                     |
-| payments     | Payment transaction records                 |
-
-### Relationships Overview
-
-| Relationship                  | Description                          |
-|------------------------------|------------------------------------|
-| users (1) ↔ (N) orders       | One user can have multiple orders   |
-| orders (1) ↔ (N) order_items | Each order contains multiple items  |
-| products (N) ↔ (1) categories| Each product belongs to a category  |
-| users (1) ↔ (N) products     | Sellers can have multiple products listed |
-
+| Table Name       | Purpose                                                                                          |
+|------------------|-------------------------------------------------------------------------------------------------|
+| address          | Stores address details, including address name, city, district, street, and building number.     |
+| cart             | Represents a customer's shopping cart.                                                          |
+| cart_item        | Stores individual products and their quantities within a specific shopping cart.                 |
+| cartitem_product | Links products to items in a shopping cart.                                                     |
+| coupon           | Stores information about discount coupons, including code, discount amount, expiration date, and associated seller or game. |
+| customer         | Manages customer accounts, including name, phone number, email, password, height, age, and referrer ID. |
+| customer_product | Tracks products associated with a customer, including quantity.                                  |
+| favorites        | Stores products that customers have marked as favorites.                                        |
+| game             | Stores details about games, including game name, type, and reset hours.                         |
+| invites          | Records customer invitations or referrals.                                                      |
+| order_product    | Links products to specific orders and includes the price at the time of order.                  |
+| orders           | Records completed customer orders, including order date, customer ID, and address name.         |
+| payment_info     | Stores customer payment card details such as card number, expiration date, CVC, card owner, and card name. |
+| plays            | Records instances of customers playing games, including play time.                              |
+| product          | Contains details for all products available for sale, such as product name, price, color, size, material, stock, and associated seller. |
+| review           | Stores customer reviews for products, including star rating, comment, and rating date.          |
+| seller           | Stores seller information, including seller name, experience, rating, and associated shipment ID. |
+| shipping_company | Stores details about shipping companies, including company name.     
 ---
 
 ## Getting Started
