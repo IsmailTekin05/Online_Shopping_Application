@@ -2,6 +2,8 @@
 
 A complete e-commerce application built entirely in **Java**, designed for both **customers** and **sellers**. Developed with **Apache NetBeans**, powered by **Apache Ant**, and backed by a **MySQL** database.
 
+---
+
 # Table of Contents
 
 - [Key Features](#key-features)
@@ -13,6 +15,8 @@ A complete e-commerce application built entirely in **Java**, designed for both 
 - [Contributors](#contributors)
 - [Conclusions](#conclusions)
 
+---
+
 # Key Features
 
 The application supports two distinct user roles: **Customer** and **Seller**.
@@ -21,81 +25,83 @@ The application supports two distinct user roles: **Customer** and **Seller**.
 
 - Register & login
 - Browse and view products
-- Add/remove/update items in cart
+- Add, remove, and update items in the cart
 - Place orders and checkout
 - View order history
 
 ## Seller Features
 
 - Secure login
-- Manage product inventory (add/edit/delete/view)
+- Manage product inventory (add, edit, delete, view)
 - View customer list
 - View all and pending orders
 - Dashboard showing total products, orders, and customers
 
 ## Feature Summary Table
 
-| Feature            | Description                          | Role             |
-| ------------------ | ---------------------------------- | ---------------- |
-| Authentication     | Secure login/logout & registration | Customer, Seller |
-| Product Browsing   | View products & details             | Customer         |
-| Cart Operations    | Manage cart items and total cost   | Customer         |
-| Order Management   | Place and view orders               | Customer         |
-| Product Management | Manage product inventory            | Seller           |
-| Customer Management| View all registered customers       | Seller           |
-| Order Oversight    | View and manage orders              | Seller           |
-| System Dashboard   | Overview of system metrics          | Seller           |
+| Feature             | Description                          | Role             |
+| ------------------- | ---------------------------------- | ---------------- |
+| Authentication      | Secure login/logout & registration | Customer, Seller |
+| Product Browsing    | View products & details             | Customer         |
+| Cart Operations     | Manage cart items and total cost   | Customer         |
+| Order Management    | Place and view orders               | Customer         |
+| Product Management  | Manage product inventory            | Seller           |
+| Customer Management | View all registered customers       | Seller           |
+| Order Oversight     | View and manage orders              | Seller           |
+| System Dashboard    | Overview of system metrics          | Seller           |
+
+---
 
 # Technology Stack
 
-| Component   | Technology      |
-| ----------- | --------------- |
-| Language    | Java            |
-| IDE         | Apache NetBeans |
-| Build Tool  | Apache Ant      |
-| Database    | MySQL           |
+| Component  | Technology      |
+| ---------- | --------------- |
+| Language   | Java            |
+| IDE        | Apache NetBeans |
+| Build Tool | Apache Ant      |
+| Database   | MySQL           |
 
-This project uses traditional Java tooling (NetBeans + Ant), unlike modern stacks with Spring Boot or Maven.
+> This project uses traditional Java tooling (NetBeans + Ant), unlike modern stacks with Spring Boot or Maven.
+
+---
 
 # Project Structure
 
 Online_Shopping_Application/
-
 ├── build/ # Compiled files and JARs
-
 ├── nbproject/ # NetBeans project metadata
-
 ├── src/ # Source code
-
 ├── schema.sql # Database schema
-
 ├── build.xml # Ant build script
-
 └── LICENSE # License file
 
-less
+yaml
 Copy
 Edit
+
+---
 
 # Database Model
 
 The main tables include:
 
-| Table             | Purpose                           |
-| ----------------- | -------------------------------- |
-| customer          | Customer account data             |
-| seller            | Seller info                      |
-| product           | Product details                  |
-| cart              | Customer cart reference          |
-| cart_item         | Products inside the cart         |
-| orders            | Placed orders                   |
-| order_product     | Products associated with an order|
-| favorites         | Customer favorites               |
-| payment_info      | Payment card details             |
-| review            | Customer reviews                 |
-| coupon            | Discount codes                  |
-| shipping_company  | Shipping company details         |
-| address           | Shipping address details         |
+| Table            | Purpose                           |
+| ---------------- | -------------------------------- |
+| customer         | Customer account data             |
+| seller           | Seller information               |
+| product          | Product details                  |
+| cart             | Customer cart reference          |
+| cart_item        | Products inside the cart         |
+| orders           | Placed orders                   |
+| order_product    | Products associated with an order|
+| favorites        | Customer favorites               |
+| payment_info     | Payment card details             |
+| review           | Customer reviews                 |
+| coupon           | Discount codes                  |
+| shipping_company | Shipping company details         |
+| address          | Shipping address details         |
+
+---
 
 # Getting Started
 
@@ -105,37 +111,35 @@ The main tables include:
 - Apache NetBeans IDE (8.2 or newer)
 - MySQL database (5.5 or newer)
 
-## Installation
+## Installation & Setup
 
-bash
+```bash
+# Clone the repository
 git clone https://github.com/IsmailTekin05/Online_Shopping_Application.git
 cd Online_Shopping_Application
 
-Create a new MySQL database, e.g., online_shopping_db.
+# Create a new MySQL database (e.g., online_shopping_db)
 
-Import the schema:
-
-bash
-Copy
-Edit
+# Import the schema:
 mysql -u your_user -p your_database < schema.sql
 Open the project in NetBeans (File > Open Project), select the cloned folder.
 
 Configure database connection parameters (e.g., in DBConnection.java).
 
-Running the Project
-Build: Right-click project → Clean and Build.
+Build the project: Right-click project → Clean and Build.
 
-Run: Right-click project → Run.
+Run the project: Right-click project → Run.
 
 License
 This project is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) license.
 
 You may share (copy and redistribute) the material.
 
-You must provide attribution.
+You must provide proper attribution.
 
-You may not distribute modified versions.
+You may not distribute modified versions of the project.
+
+For more details, see the LICENSE file.
 
 Contributors
 Developed collaboratively by four contributors.
