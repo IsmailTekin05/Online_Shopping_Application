@@ -60,11 +60,17 @@ This project uses traditional Java tooling (NetBeans + Ant), unlike modern stack
 # Project Structure
 
 Online_Shopping_Application/
+
 ├── build/ # Compiled files and JARs
+
 ├── nbproject/ # NetBeans project metadata
+
 ├── src/ # Source code
+
 ├── schema.sql # Database schema
+
 ├── build.xml # Ant build script
+
 └── LICENSE # License file
 
 less
@@ -101,9 +107,10 @@ The main tables include:
 
 ## Installation
 
-```bash
+bash
 git clone https://github.com/IsmailTekin05/Online_Shopping_Application.git
 cd Online_Shopping_Application
+
 Create a new MySQL database, e.g., online_shopping_db.
 
 Import the schema:
