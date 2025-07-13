@@ -48,7 +48,7 @@ A **complete e-commerce application** developed entirely in **Java**, designed t
 
 ## Project Structure
 
-```plaintext
+
 Online_Shopping_Application/
 ├── src/                         # Java source files
 │   ├── model/                   # Entity classes
