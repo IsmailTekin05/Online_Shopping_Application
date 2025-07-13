@@ -50,92 +50,110 @@ A **complete e-commerce application** developed entirely in **Java**, designed t
 
 
 Online_Shopping_Application/
+
 ├── src/                         # Java source files
+
 │   ├── model/                   # Entity classes
+
 │   ├── dao/                     # Data Access Objects for DB operations
+
 │   ├── service/                 # Business logic
+
 │   ├── controller/              # Handles user requests
+
 │   └── util/                    # Utility classes (DB connections, helpers)
+
 ├── build.xml                    # Apache Ant build configuration
+
 ├── lib/                        # External libraries (if any)
+
 ├── README.md                   # Project documentation
+
 └── database.sql                # SQL scripts to create and populate DB
-Database Model
-Table Name	Description
-users	Stores user information (customers, sellers, admins)
-products	Contains product details
-categories	Product categories
-orders	Customer orders
-order_items	Items within each order
-payments	Payment transaction records
 
-Relationships Overview
-Relationship	Description
-users (1) ↔ (N) orders	One user can have multiple orders
-orders (1) ↔ (N) order_items	Each order contains multiple items
-products (N) ↔ (1) categories	Each product belongs to a category
-users (1) ↔ (N) products	Sellers can have multiple products listed
 
-Getting Started
-Prerequisites
-Java JDK 8+ installed
+## Database Model
 
-Apache NetBeans IDE (recommended)
+| Table Name   | Description                                 |
+|--------------|---------------------------------------------|
+| users        | Stores user information (customers, sellers, admins) |
+| products     | Contains product details                    |
+| categories   | Product categories                          |
+| orders       | Customer orders                            |
+| order_items  | Items within each order                     |
+| payments     | Payment transaction records                 |
 
-Apache Ant installed and configured
+### Relationships Overview
 
-MySQL Server installed and running
+| Relationship                  | Description                          |
+|------------------------------|------------------------------------|
+| users (1) ↔ (N) orders       | One user can have multiple orders   |
+| orders (1) ↔ (N) order_items | Each order contains multiple items  |
+| products (N) ↔ (1) categories| Each product belongs to a category  |
+| users (1) ↔ (N) products     | Sellers can have multiple products listed |
 
-Basic knowledge of running Java projects and SQL
+---
 
-Installation Steps
-Clone the repository:
+## Getting Started
 
-bash
-Copy
-Edit
-git clone https://github.com/IsmailTekin05/Online_Shopping_Application.git
-Import the project into Apache NetBeans.
+### Prerequisites
 
-Configure database:
+- Java JDK 8+ installed
+- Apache NetBeans IDE (recommended)
+- Apache Ant installed and configured
+- MySQL Server installed and running
+- Basic knowledge of running Java projects and SQL
 
-Create a MySQL database.
+### Installation Steps
 
-Run database.sql script to create tables and insert initial data.
+1. Clone the repository:
 
-Update database credentials in the configuration file (DBConnection.java or equivalent).
+    ```bash
+    git clone https://github.com/IsmailTekin05/Online_Shopping_Application.git
+    ```
 
-Build and run the project using Apache Ant:
+2. Import the project into Apache NetBeans.
 
-bash
-Copy
-Edit
-ant clean build run
-Usage
-Register as a customer or seller.
+3. Configure database:
 
-Sellers can add and manage products.
+    - Create a MySQL database.
+    - Run `database.sql` script to create tables and insert initial data.
+    - Update database credentials in the configuration file (`DBConnection.java` or equivalent).
 
-Customers browse products, add items to cart, and place orders.
+4. Build and run the project using Apache Ant:
 
-Admins manage users and oversee orders.
+    ```bash
+    ant clean build run
+    ```
 
-Contributing
+---
+
+## Usage
+
+- Register as a customer or seller.
+- Sellers can add and manage products.
+- Customers browse products, add items to cart, and place orders.
+- Admins manage users and oversee orders.
+
+---
+
+## Contributing
+
 Contributions are welcome! Please follow these steps:
 
-Fork the repository.
-
-Create your feature branch (git checkout -b feature/your-feature).
-
-Commit your changes (git commit -m 'Add some feature').
-
-Push to the branch (git push origin feature/your-feature).
-
-Open a Pull Request describing your changes.
+1. Fork the repository.
+2. Create your feature branch (`git checkout -b feature/your-feature`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Open a Pull Request describing your changes.
 
 Please ensure your code follows the existing style and includes necessary tests.
 
-License
-This project is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) License.
+---
 
-See the LICENSE file for details.
+## License
+
+This project is licensed under the **Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)** License.
+
+See the [LICENSE](LICENSE) file for details.
+
