@@ -2,182 +2,155 @@
 A complete e-commerce application built entirely in Java, designed for both customers and sellers. Developed with Apache NetBeans, powered by Apache Ant, and backed by a MySQL database.
 
 📌 Table of Contents
-✨ Key Features
+Key Features
 
-🧰 Technology Stack
+Technology Stack
 
-📁 Project Structure
+Project Structure
 
-🗃️ Database Model
+Database Model
 
-🚀 Getting Started
+Getting Started
 
-📄 License
+License
 
-🤝 Contributors
+Contributors
 
-📌 Conclusions
+Conclusions
 
-✨ Key Features
+Key Features
 The application supports two distinct user roles: Customer and Seller.
 
-👤 Customer Features
-✅ Register & login
+Customer Features
+Register & login
 
-🛍️ Browse and view products
+Browse and view products
 
-🛒 Add/remove/update items in cart
+Add/remove/update items in cart
 
-💳 Place orders and checkout
+Place orders and checkout
 
-📜 View order history
+View order history
 
-🛒 Seller Features
-🔐 Secure login
+Seller Features
+Secure login
 
-📦 Manage product inventory (add/edit/delete/view)
+Manage product inventory (add/edit/delete/view)
 
-👥 View customer list
+View customer list
 
-📦 View all and pending orders
+View all and pending orders
 
-📊 Dashboard showing total products, orders, and customers
+Dashboard showing total products, orders, and customers
 
-🗂️ Feature Summary Table
-Feature	Description	Role
-Authentication	Secure login/logout & registration	Customer, Seller
-Product Browsing	View products & details	Customer
-Cart Operations	Manage cart items, quantities, and total cost	Customer
-Order Management	Place and view orders	Customer
-Product Management	Full control over inventory	Seller
-Customer Management	View all registered customers	Seller
-Order Oversight	View and manage order statuses	Seller
-System Dashboard	Overview of key system metrics	Seller
+Feature Summary Table
+| Feature             | Description                        | Role             |
+| ------------------- | ---------------------------------- | ---------------- |
+| Authentication      | Secure login/logout & registration | Customer, Seller |
+| Product Browsing    | View products & details            | Customer         |
+| Cart Operations     | Manage cart items and total cost   | Customer         |
+| Order Management    | Place and view orders              | Customer         |
+| Product Management  | Manage product inventory           | Seller           |
+| Customer Management | View all registered customers      | Seller           |
+| Order Oversight     | View and manage orders             | Seller           |
+| System Dashboard    | Overview of system metrics         | Seller           |
 
-🧰 Technology Stack
-Component	Technology
-Language	Java (100%)
-IDE	Apache NetBeans
-Build Tool	Apache Ant
-Database	MySQL
 
-This project uses traditional Java tooling (NetBeans + Ant), differing from modern stacks that typically use Spring Boot or Maven. Understanding this helps contributors align with the intended development flow.
+Technology Stack
+| Component  | Technology      |
+| ---------- | --------------- |
+| Language   | Java            |
+| IDE        | Apache NetBeans |
+| Build Tool | Apache Ant      |
+| Database   | MySQL           |
 
-📁 Project Structure
-bash
+
+This project uses traditional Java tooling (NetBeans + Ant), unlike modern stacks with Spring Boot or Maven.
+
+Project Structure
+graphql
 Copy
 Edit
 Online_Shopping_Application/
-├── build/             # Compiled .class files and JARs
-├── nbproject/         # NetBeans project metadata
-├── src/               # Source code (organized by MVC or layered structure)
-├── schema.sql         # Database schema
-├── build.xml          # Apache Ant build script
-└── LICENSE            # CC BY-ND 4.0 License
-NetBeans and Ant integration is tightly coupled here. Contributors are advised to use NetBeans IDE for optimal project compatibility.
-
-🗃️ Database Model
-A relational schema defined in schema.sql. Below are the key tables:
+├── build/          # Compiled files and JARs
+├── nbproject/      # NetBeans project metadata
+├── src/            # Source code
+├── schema.sql      # Database schema
+├── build.xml       # Ant build script
+└── LICENSE         # License file
+Database Model
+The main tables include:
 
 Table	Purpose
-customer	Customer account data
-seller	Seller info (name, experience, rating)
-product	Product details (price, size, color, stock)
-cart	Customer cart reference
-cart_item	Products inside the cart
-orders	Placed orders and metadata
-order_product	Product details associated with an order
-favorites	Products marked as favorite
-payment_info	Customer payment card details
-review	Customer reviews and star ratings
-coupon	Discount codes and rules
-shipping_company	Shipping company details
-address	Shipping address details
-invites	Customer referral tracking
-plays, game	Bonus: Game and engagement features
+| Table             | Purpose                           |
+| ----------------- | --------------------------------- |
+| customer          | Customer account data             |
+| seller            | Seller info                       |
+| product           | Product details                   |
+| cart              | Customer cart reference           |
+| cart\_item        | Products inside the cart          |
+| orders            | Placed orders                     |
+| order\_product    | Products associated with an order |
+| favorites         | Customer favorites                |
+| payment\_info     | Payment card details              |
+| review            | Customer reviews                  |
+| coupon            | Discount codes                    |
+| shipping\_company | Shipping company details          |
+| address           | Shipping address details          |
 
-🚀 Getting Started
-✅ Prerequisites
+
+Getting Started
+Prerequisites
 Java Development Kit (JDK)
 
-Apache NetBeans (v8.2+ recommended)
+Apache NetBeans IDE (8.2 or newer)
 
-MySQL (v5.5+)
+MySQL database (5.5 or newer)
 
-📥 Installation Steps
+Installation
 bash
 Copy
 Edit
 git clone https://github.com/IsmailTekin05/Online_Shopping_Application.git
 cd Online_Shopping_Application
-Create Database
+Create a new MySQL database, e.g., online_shopping_db.
 
-Create a new MySQL database (e.g., online_shopping_db)
-
-Import schema.sql using:
+Import the schema:
 
 bash
 Copy
 Edit
 mysql -u your_user -p your_database < schema.sql
-Open in NetBeans
+Open the project in NetBeans (File > Open Project), select the cloned folder.
 
-File → Open Project...
+Configure database connection parameters (e.g., in DBConnection.java).
 
-Select the cloned folder
+Running the Project
+Build: Right-click project → Clean and Build.
 
-NetBeans will detect the Ant-based Java project
+Run: Right-click project → Run.
 
-Configure Database Connection
+License
+This project is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) license.
 
-Locate configuration (e.g., DBConnection.java)
+You may share (copy and redistribute) the material.
 
-Update JDBC URL, username, and password
+You must provide attribution.
 
-▶️ How to Run
-Build: Right-click the project → Clean and Build
+You may not distribute modified versions.
 
-Run: Right-click again → Run Project
+Contributors
+Developed collaboratively by four contributors.
 
-If it's a GUI app: a window will appear
-If it's a web app: it may launch in a browser
+Conclusions
+This project is a traditional Java e-commerce prototype demonstrating:
 
-📄 License
-Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)
+Role-based features for customers and sellers.
 
-You are free to:
+Use of NetBeans and Ant for build and development.
 
-✅ Share — copy and redistribute the material
-But you must:
+MySQL relational database integration.
 
-✅ Attribute — give proper credit
+Ideal for learning, prototyping, or educational purposes.
 
-🚫 NoDerivatives — you may not distribute modified versions
-
-This license encourages sharing, but restricts distribution of derivative works. Contributions via documentation, bug fixes, and suggestions are welcome.
-
-🤝 Contributors
-Developed by a team of four collaborators.
-Thanks to each contributor for building this educational and functional project together.
-
-📌 Conclusions
-This application is a complete e-commerce prototype showcasing:
-
-Solid Java fundamentals
-
-Clear role separation (Customer vs Seller)
-
-Traditional stack (NetBeans + Ant + MySQL)
-
-Real-world schema design
-
-Despite some file access limitations (e.g., full src/ tree or build.xml internals), the documentation and structure provide all the necessary context to understand and run the project.
-It is ideal for:
-
-Java learners
-
-Academic demos
-
-Prototypes based on desktop or lightweight web app structures
-
-If you'd like to fork, learn from, or build on this project (within license limits) — welcome aboard! ⭐
+⭐ Feel free to explore, learn, and share this project within license terms!
