@@ -1,4 +1,4 @@
-# 🛒 Online Shopping Application
+# 🛒 Online Shopping Application 
 
 A **comprehensive e-commerce application** developed entirely in **Java** using a traditional layered architecture. This project caters to both **customers** and **sellers**, providing functionalities from user registration to order processing. Developed using **Apache NetBeans**, built with **Apache Ant**, and backed by a **MySQL** relational database.
 
